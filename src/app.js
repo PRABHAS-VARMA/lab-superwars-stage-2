@@ -126,23 +126,26 @@ const initPlayers = (players) => {
   let detailedPlayers = [];
   // Create players using for loop
   // Type your code here
-  players.forEach((x, y) => {
-    detailedPlayers.push({
-      name: x,
-      strength: getRandomStrength(),
-      image: 'images/super-' + (y + 1) + '.png',
-      type: y % 2 == 0 ? 'hero' : 'villain',
-      id: y + 1,
-    });
-  });
-  return detailedPlayers;
-};
 
+  let x = 0;
+  while (x < players.length) {
+      const y = players[x];
+      detailedPlayers.push({
+          name: y,
+          strength: getRandomStrength(),
+          image: 'images/super-' + (x+1) + '.png',
+          type: x%2===0 ? "hero":"villain",
+          id: x + 1
+      });
+      x++;
+  }
+  return detailedPlayers;
+}
 // getting random strength
 const getRandomStrength = () => {
   // Return a random integer (0,100]
   // Note: You can use Math.random() and Math.ceil()
-  let x= Math.ceil(Math.random() * 100)+1;
+  let x= Math.ceil(Math.random() * 100);
   return x
 };
 
